@@ -3,7 +3,7 @@ import codecs
 import os
 
 class RCOutput():
-    def __init__(self, groups, board):
+    def __init__(self, groups, board, post_start=False):
 
         result = (  "#\n"
                     "#\n"
@@ -41,7 +41,19 @@ class RCOutput():
                         excluded = True
                 if excluded:
                     continue
-                path = os.path.split(param.GetPath())[1]
+
+                if not post_start:
+                    # Path to start sript
+                    path = os.path.split(param.GetPath())[1]
+                else:
+                    # Path to post-start script
+                    post_path = param.GetPostPath()
+
+                    if post_path:
+                        path = os.path.split(post_path)[1]
+                    else:
+                        continue
+
                 id_val = param.GetId()
                 name = param.GetFieldValue("short_desc")
                 long_desc = param.GetFieldValue("long_desc")
@@ -58,7 +70,7 @@ class RCOutput():
                 result += "\n"
 
             result += "\n"
-        self.output = result;
+        self.output = result
 
     def Save(self, filename):
         with codecs.open(filename, 'w', 'utf-8') as f:
