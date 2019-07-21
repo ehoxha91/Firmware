@@ -138,6 +138,8 @@ include(px4_add_module)
 set(config_module_list)
 set(config_df_driver_list)
 
+examples/hello
+
 # find PX4 config
 #  look for in tree board config that matches CONFIG input
 if(NOT PX4_CONFIG_FILE)
