@@ -97,9 +97,8 @@
 #	error when ${PX4_PLATFORM} is not defined instead of silently
 #	evaluating to false.
 #
-#=============================================================================
-
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+#=======================================================================
+cmake_minimum_required(VERSION 3.10)
 
 set(PX4_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(PX4_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}")
@@ -138,7 +137,6 @@ include(px4_add_module)
 set(config_module_list)
 set(config_df_driver_list)
 
-examples/hello
 
 # find PX4 config
 #  look for in tree board config that matches CONFIG input
